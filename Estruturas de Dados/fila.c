@@ -59,6 +59,8 @@ int main(){
     
     printf("%d", back(&A)); // [4, 5, (6)] -> Retorna 6
     
+    printf("%d", queueLength(&A)); // [4, 5, 6] -> Retorna 3
+    
     //Ex2: fila B
     int i = 1;
     //Enfileiramento da fila B -> [1, 2, 4, 8, 16]
@@ -66,9 +68,15 @@ int main(){
         enqueue(&B, i);
         i *= 2;
     }
+    
+    printf("%d", queueLength(&B)); // [1, 2, 4, 8, 16] -> Retorna 5
+    
     //Desinfileiramento da fila B -> 1 2 4 8 16
     while(!filaVazia(&B))
         printf("%d ", dequeue(&B)); 
+    
+    printf("%d", queueLength(&B)); // [] -> Retorna 0
+    
     return 0;
 }
 
@@ -127,4 +135,8 @@ int front(fila *Q){
 
 int back(fila *Q){
     return Q->queue[Q->fim];
+}
+
+int queueLength(fila *Q){
+    return Q->size;
 }
